@@ -7,84 +7,84 @@
 
 	# Mise à jour du system
 
-    output ""
-    output "Updating system and installing required packages."
-    output ""
+    echo ""
+    echo "Updating system and installing required packages."
+    echo ""
 	
 	yum -y update
 	yum -y upgrade
 	yum -y groupinstall "Development Tools" gmp-devel mysql-devel curl-devel libidn-devel libssh2-devel python-devel openldap-devel vim memcached wget
-	output ""
-    output "Arret du Firewall :"
-	output ""
+	echo ""
+    echo "Arret du Firewall :"
+	echo ""
 	systemctl stop firewalld
-	output ""
+	echo ""
 	systemctl status firewalld
-	output ""
-    output "Vérifixation de SeLinux :"
-	output ""
+	echo ""
+    echo "Vérifixation de SeLinux :"
+	echo ""
 	sestatus
-	output ""
+	echo ""
 	
 	
 	# Installation Nginx
-	output ""
-    output "Installation Nginx :"
-    output ""
+	echo ""
+    echo "Installation Nginx :"
+    echo ""
 	yum -y install nginx
-	output ""
+	echo ""
 	systemctl start nginx.service
 	systemctl enable nginx.service
-	output ""
-    output "Vérification de Nginx :"
-	output ""
+	echo ""
+    echo "Vérification de Nginx :"
+	echo ""
 	systemctl status nginx.service
-	output ""
+	echo ""
 	
 		
 	# Installation DB (MariaDB)
-	output ""
+	echo ""
 	yum -y install mariadb-server mariadb
 	systemctl start mariadb 
 	systemctl enable mariadb
-	output ""
-    output "Vérification de DB :"
-	output ""
+	echo ""
+    echo "Vérification de DB :"
+	echo ""
 	systemctl status mariadb.service
-	output "Mise en route DB :"
+	echo "Mise en route DB :"
 	mysql_secure_installation
-	output ""
+	echo ""
 	
 	
 	# Installation PHP
-	output ""
+	echo ""
 	yum -y install php php-mysql php-gd php-ldap php-odbc php-pear php-xml php-xmlrpc php-mbstring php-snmp php-soap php-mcrypt curl curl-devel php-memcache
 	systemctl start memcached
 	systemctl enable memcached
-	output ""
-    output "Vérification de Memcache :"
-	output ""
+	echo ""
+    echo "Vérification de Memcache :"
+	echo ""
 	systemctl status memcached
-	output ""
+	echo ""
 	
 	
 	# Installation APC
-	output ""
-	yum -y install php-pear php-devel httpd-devel pcre-devel gcc make
+	echo ""
+	yum -y install php-pear php-devel pcre-devel gcc make
 	cd
 	pecl install apc
 	echo "extension=apc.so" > /etc/php.d/apc.ini
-	output ""
+	echo ""
 	
 	
 	# Installation APC
-	output ""
+	echo ""
 	yum -y install phpMyAdmin
-	output ""
-    output "Relance Apache :"
-	output ""
-	systemctl restart httpd.service
-	output ""
+	echo ""
+    echo "Relance Apache :"
+	echo ""
+	systemctl restart nginx.service
+	echo ""
 	
 	
 	
