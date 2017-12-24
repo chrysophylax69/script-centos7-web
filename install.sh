@@ -27,18 +27,18 @@
 	output ""
 	
 	
-	# Installation Apache
+	# Installation Nginx
 	output ""
-    output "Installation Apache :"
+    output "Installation Nginx :"
     output ""
-	yum -y install httpd
+	yum -y install nginx
 	output ""
-	systemctl start httpd.service
-	systemctl enable httpd.service
+	systemctl start nginx.service
+	systemctl enable nginx.service
 	output ""
-    output "Vérification de Apache :"
+    output "Vérification de Nginx :"
 	output ""
-	systemctl status httpd.service
+	systemctl status nginx.service
 	output ""
 	
 		
