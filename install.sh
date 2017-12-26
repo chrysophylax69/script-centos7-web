@@ -70,7 +70,7 @@
 	echo ""
     echo "Installation PHP :"
     echo ""
-	yum -y install php php-mysql php-gd php-ldap php-odbc php-pear php-xml php-xmlrpc php-mbstring php-snmp php-soap php-mcrypt curl curl-devel php-memcache
+	yum -y install php php-mysql php-fpm php-gd php-ldap php-odbc php-pear php-xml php-xmlrpc php-mbstring php-snmp php-soap php-mcrypt curl curl-devel php-memcache
 	systemctl start memcached
 	systemctl enable memcached
 	echo ""
