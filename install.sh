@@ -35,14 +35,14 @@
 	echo ""
     echo "Installation NGINX :"
     echo ""
-	yum -y install NGINX
+	yum -y install nginx
 	echo ""
-	systemctl start NGINX.service
-	systemctl enable NGINX.service
+	systemctl start nginx.service
+	systemctl enable nginx.service
 	echo ""
     echo "Vérification de NGINX :"
 	echo ""
-	systemctl status NGINX.service
+	systemctl status nginx.service
 	echo ""
 	sleep 3
 	
@@ -103,8 +103,8 @@
 	echo ""
     echo "Relance Apache :"
 	echo ""
-	systemctl restart NGINX.service
+	systemctl restart nginx.service
 	echo ""
 	echo ""
-	systemctl status NGINX.service
+	systemctl status nginx.service
 	echo ""
