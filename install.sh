@@ -17,7 +17,7 @@
 	sudo yum -y update
 	sudo yum -y upgrade
 	sudo yum -y groupinstall "Development Tools" 
-	sudo yum -y install gmp-devel mysql-devel curl-devel libidn-devel libssh2-devel python-devel openldap-devel vim memcached wget git
+	sudo yum -y install gmp-devel mysql-devel curl-devel libidn-devel libssh2-devel python-devel openldap-devel vim memcached wget git epel-release net-tools
 	echo ""
     echo "Arret du Firewall :"
 	echo ""
@@ -111,12 +111,18 @@
 	sleep 3
 	sudo yum -y install phpMyAdmin
 	echo ""
-    echo "Relance Apache :"
 	echo ""
-	sudo systemctl restart nginx.service
+    echo "Relance Apache + PHP-FPM :"
+	echo ""
+	sudo systemctl restart nginx
+	sudo systemctl restart php-fpm 
 	echo ""
 	echo ""
-	sudo systemctl status nginx.service
+	sudo systemctl status nginx
+	echo ""
+	sudo systemctl status php-fpm
+	echo ""
+	sudo systemctl status memcached
 	echo ""
 	echo ""
 	echo "Installation Finish. Voir le readme pour la conf."
