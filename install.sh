@@ -97,7 +97,7 @@
 	sudo yum -y install php-pear php-devel httpd-devel pcre-devel gcc make
 	cd
 	sudo pecl install apc
-	echo "extension=apc.so" > /etc/php.d/apc.ini
+	echo "extension=apc.so" >> /etc/php.d/apc.ini
 	echo ""
 	sleep 5
 	clear
