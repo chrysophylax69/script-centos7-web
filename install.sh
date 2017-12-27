@@ -94,7 +94,7 @@
     echo "Installation APC :"
     echo ""
 	sleep 3
-	sudo yum -y install php-pear php-devel httpd-devel pcre-devel gcc make
+	sudo yum -y install php-pear php-devel pcre-devel gcc make
 	cd
 	sudo pecl install apc
 	echo "extension=apc.so" >> /etc/php.d/apc.ini
