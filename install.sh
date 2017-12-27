@@ -7,46 +7,47 @@
 
 
 	# Mise à jour du system
-
+	
+	clear
     echo ""
     echo "Updating system and installing required packages."
     echo ""
+	sleep 3
 	
-	yum -y update
-	yum -y upgrade
-	yum -y groupinstall "Development Tools" 
-	yum -y install gmp-devel mysql-devel curl-devel libidn-devel libssh2-devel python-devel openldap-devel vim memcached wget git
+	sudo yum -y update
+	sudo yum -y upgrade
+	sudo yum -y groupinstall "Development Tools" 
+	sudo yum -y install gmp-devel mysql-devel curl-devel libidn-devel libssh2-devel python-devel openldap-devel vim memcached wget git
 	echo ""
     echo "Arret du Firewall :"
 	echo ""
-	systemctl stop firewalld
+	sudo systemctl stop firewalld
 	echo ""
-	systemctl status firewalld
+	sudo systemctl status firewalld
 	echo ""
 	echo "Vérifixation de SeLinux :"
 	echo ""
-	sestatus
+	sudo sestatus
 	echo ""
-	sleep 3
+	sleep 5
 	clear
 	
 	
 	# Installation NGINX
-	clear
-	sleep 1
 	echo ""
     echo "Installation NGINX :"
     echo ""
-	yum -y install nginx
+	sleep 3
+	sudo yum -y install nginx
 	echo ""
 	systemctl start nginx.service
 	systemctl enable nginx.service
 	echo ""
     echo "Vérification de NGINX :"
 	echo ""
-	systemctl status nginx.service
+	sudo systemctl status nginx.service
 	echo ""
-	sleep 3
+	sleep 5
 	clear
 	
 		
@@ -55,17 +56,18 @@
 	echo ""
     echo "Installation MariaDB :"
     echo ""
-	yum -y install mariadb-server mariadb
-	systemctl start mariadb 
-	systemctl enable mariadb
+	sleep 3
+	sudo yum -y install mariadb-server mariadb
+	sudo systemctl start mariadb 
+	sudo systemctl enable mariadb
 	echo ""
     echo "Vérification de DB :"
 	echo ""
-	systemctl status mariadb.service
+	sudo systemctl status mariadb.service
 	echo "Mise en route DB :"
-	mysql_secure_installation
+	sudo mysql_secure_installation
 	echo ""
-	sleep 3
+	sleep 5
 	clear
 	
 	# Installation PHP
@@ -73,15 +75,16 @@
 	echo ""
     echo "Installation PHP :"
     echo ""
-	yum -y install php php-mysql php-common php-fpm php-gd php-ldap php-odbc php-pear php-xml php-xmlrpc php-mbstring php-snmp php-soap php-mcrypt curl curl-devel php-memcache
-	systemctl start memcached
-	systemctl enable memcached
+	sleep 3
+	sudo yum -y install php php-mysql php-common php-fpm php-gd php-ldap php-odbc php-pear php-xml php-xmlrpc php-mbstring php-snmp php-soap php-mcrypt curl curl-devel php-memcache
+	sudo systemctl start memcached
+	sudo systemctl enable memcached
 	echo ""
     echo "Vérification de Memcache :"
 	echo ""
-	systemctl status memcached
+	sudo systemctl status memcached
 	echo ""
-	sleep 3
+	sleep 5
 	clear
 	
 	
@@ -90,12 +93,13 @@
 	echo ""
     echo "Installation APC :"
     echo ""
-	yum -y install php-pear php-devel httpd-devel pcre-devel gcc make
+	sleep 3
+	sudo yum -y install php-pear php-devel httpd-devel pcre-devel gcc make
 	cd
-	pecl install apc
+	sudo pecl install apc
 	echo "extension=apc.so" > /etc/php.d/apc.ini
 	echo ""
-	sleep 3
+	sleep 5
 	clear
 	
 	
@@ -104,14 +108,15 @@
 	echo ""
     echo "Installation phpMyAdmin :"
     echo ""
-	yum -y install phpMyAdmin
+	sleep 3
+	sudo yum -y install phpMyAdmin
 	echo ""
     echo "Relance Apache :"
 	echo ""
-	systemctl restart nginx.service
+	sudo systemctl restart nginx.service
 	echo ""
 	echo ""
-	systemctl status nginx.service
+	sudo systemctl status nginx.service
 	echo ""
 	echo ""
 	echo "Installation Finish. Voir le readme pour la conf."
