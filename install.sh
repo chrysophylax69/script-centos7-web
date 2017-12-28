@@ -12,11 +12,18 @@
     echo ""
     echo "Updating system and installing required packages."
     echo ""
+	echo ""
+	read -e -p "Installation avec PHP 7 ? [y/N] : " PHP7
 	sleep 3
 	
 	sudo yum -y epel-release
 	sudo yum -y update
 	sudo yum -y upgrade
+	if [[ ("$PHP7" == "y" || "$PHP7" == "Y") ]]; then
+	sudo wget -q http://rpms.remirepo.net/enterprise/remi-release-7.rpm
+	sudo wget -q https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+	sudo rpm -Uvh remi-release-7.rpm epel-release-latest-7.noarch.rpm
+	fi
 	sudo yum -y groupinstall "Development Tools" 
 	sudo yum -y install gmp-devel mysql-devel curl-devel libidn-devel libssh2-devel python-devel openldap-devel vim memcached wget git net-tools bind-utils
 	echo ""
@@ -80,6 +87,13 @@
     echo "Installation PHP :"
     echo ""
 	sleep 3
+	if [[ ("$PHP7" == "y" || "$PHP7" == "Y") ]]; then
+	sudo yum -y install php70 php70-php-mysqlnd php70-php-common php70-php-fpm php70-php-gd php70-php-ldap php70-php-odbc php70-php-pear php70-php-xml php70-php-xmlrpc php70-php-mbstring php70-php-snmp php70-php-soap php70-php-mcrypt php70-php-pecl-memcache php70-php-opcache php70-php-imap php7.0-cli ImageMagick ruby-libsphp70-php-intl php70-php-pspell php70-php-recode php70-php-tidy php70-php-pecl-imagick php70-php-pecl-zip
+	sudo systemctl start memcached
+	sudo systemctl enable memcached
+	sudo systemctl start php70-php-fpm
+	sudo systemctl enable php70-php-fpm
+	fi
 	sudo yum -y install php php-mysql php-common php-fpm php-gd php-ldap php-odbc php-pear php-xml php-xmlrpc php-mbstring php-snmp php-soap php-mcrypt curl curl-devel php-pecl-memcache
 	sudo systemctl start memcached
 	sudo systemctl enable memcached
@@ -90,6 +104,9 @@
 	echo ""
 	sudo systemctl status memcached
 	echo ""
+	if [[ ("$PHP7" == "y" || "$PHP7" == "Y") ]]; then
+	sudo systemctl status php70-php-fpm
+	fi
 	sudo systemctl status php-fpm
 	echo ""
 	sleep 5
@@ -121,11 +138,17 @@
     echo "Relance Apache + PHP-FPM :"
 	echo ""
 	sudo systemctl restart nginx
+	if [[ ("$PHP7" == "y" || "$PHP7" == "Y") ]]; then
+	sudo systemctl restart php70-php-fpm
+	fi
 	sudo systemctl restart php-fpm 
 	echo ""
 	echo ""
 	sudo systemctl status nginx
 	echo ""
+	if [[ ("$PHP7" == "y" || "$PHP7" == "Y") ]]; then
+	sudo systemctl status php70-php-fpm
+	fi
 	sudo systemctl status php-fpm
 	echo ""
 	sudo systemctl status memcached
