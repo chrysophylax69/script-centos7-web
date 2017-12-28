@@ -16,6 +16,10 @@
 	
 	sudo yum -y update
 	sudo yum -y upgrade
+	sudo yum install wget
+	sudo wget -q http://rpms.remirepo.net/enterprise/remi-release-7.rpm
+	sudo wget -q https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+	rpm -Uvh remi-release-7.rpm epel-release-latest-7.noarch.rpm
 	sudo yum -y groupinstall "Development Tools" 
 	sudo yum -y install gmp-devel mysql-devel curl-devel libidn-devel libssh2-devel python-devel openldap-devel vim memcached wget git epel-release net-tools bind-utils
 	echo ""
@@ -76,15 +80,15 @@
     echo "Installation PHP :"
     echo ""
 	sleep 3
-	sudo yum -y install php70 php70-php-mysqlnd php70-php-common php70-php-fpm php70-php-gd php70-php-ldap php70-php-odbc php70-php-pear php70-php-xml php70-php-xmlrpc php70-php-mbstring php70-php-snmp php70-php-soap php70-php-mcrypt php70-php-pecl-memcache
-	sudo systemctl start memcached
-	sudo systemctl enable memcached
+	sudo yum -y install php70 php70-php-mysqlnd php70-php-common php70-php-fpm php70-php-gd php70-php-ldap php70-php-odbc php70-php-pear php70-php-xml php70-php-xmlrpc php70-php-mbstring php70-php-snmp php70-php-soap php70-php-mcrypt
+	#sudo systemctl start memcached
+	#sudo systemctl enable memcached
 	sudo systemctl start php-fpm
 	sudo systemctl enable php-fpm
 	echo ""
     echo "Vérification de Memcache :"
 	echo ""
-	sudo systemctl status memcached
+	#sudo systemctl status memcached
 	echo ""
 	sudo systemctl status php-fpm
 	echo ""
