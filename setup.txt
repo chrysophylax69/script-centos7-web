@@ -1,0 +1,112 @@
+************ PHP 5.4 ************
+mkdir /etc/nginx/sites-available
+mkdir /etc/nginx/sites-enabled
+vim /etc/nginx/nginx.conf (Add these lines to the end of the http {} block, then save the file:)
+include /etc/nginx/sites-enabled/*.conf;
+server_names_hash_bucket_size 64;
+
+vim /etc/nginx/sites-available/nginxsite.com.conf =>
+
+server {
+    listen       80;
+    server_name  server_domain_name_or_IP;
+
+    # note that these lines are originally from the "location /" block
+    root   /usr/share/nginx/html;
+    index index.php index.html index.htm;
+
+    location / {
+        try_files $uri $uri/ =404;
+    }
+    error_page 404 /404.html;
+    error_page 500 502 503 504 /50x.html;
+    location = /50x.html {
+        root /usr/share/nginx/html;
+    }
+
+    location ~ \.php$ {
+        try_files $uri =404;
+        fastcgi_pass unix:/var/run/php-fpm/php-fpm.sock;
+        fastcgi_index index.php;
+        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+        include fastcgi_params;
+    }
+}
+
+ln -s /etc/nginx/sites-available/nginxsite.com.conf /etc/nginx/sites-enabled/nginxsite.com.conf
+
+vim /etc/php.ini
+cgi.fix_pathinfo=0
+
+vim /etc/php-fpm.d/www.conf
+listen = /var/run/php-fpm/php-fpm.sock
+listen.owner = nginx (or nobody)
+listen.group = nginx (or nobody)
+user = nginx
+group = nginx
+
+phpmyadmin =>
+ln -s /usr/share/phpMyAdmin/ /var/www/html/
+chmod 777 /var/lib/php/session
+
+
+************ PHP 7.0 ************
+$ wget -q http://rpms.remirepo.net/enterprise/remi-release-7.rpm
+$ wget -q https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+# rpm -Uvh remi-release-7.rpm epel-release-latest-7.noarch.rpm
+systemctl restart php70-php-fpm
+
+
+mkdir /etc/nginx/sites-available
+mkdir /etc/nginx/sites-enabled
+vim /etc/nginx/nginx.conf (Add these lines to the end of the http {} block, then save the file:)
+include /etc/nginx/sites-enabled/*.conf;
+server_names_hash_bucket_size 64;
+
+vim /etc/nginx/sites-available/nginxsite.com.conf =>
+
+server {
+    listen       80;
+    server_name  server_domain_name_or_IP;
+
+    # note that these lines are originally from the "location /" block
+    root   /usr/share/nginx/html;
+    index index.php index.html index.htm;
+
+    location / {
+        try_files $uri $uri/ =404;
+    }
+    error_page 404 /404.html;
+    error_page 500 502 503 504 /50x.html;
+    location = /50x.html {
+        root /usr/share/nginx/html;
+    }
+
+    location ~ \.php$ {
+        try_files $uri =404;
+        fastcgi_pass unix:/var/run/php-fpm/php-fpm.sock;
+        fastcgi_index index.php;
+        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+        include fastcgi_params;
+    }
+}
+
+ln -s /etc/nginx/sites-available/nginxsite.com.conf /etc/nginx/sites-enabled/nginxsite.com.conf
+
+vim /etc/php.ini
+cgi.fix_pathinfo=0
+
+vim /etc/opt/remi/php70/php-fpm.d/www.conf
+listen = /var/opt/remi/php70/run/php-fpm/php-fpm.sock
+listen.owner = nginx (or nobody)
+listen.group = nginx (or nobody)
+user = nginx
+group = nginx
+
+vim /etc/opt/remi/php70/php-fpm.conf
+pid = /var/opt/remi/php70/run/php-fpm/php-fpm.pid
+
+phpmyadmin =>
+ln -s /usr/share/phpMyAdmin/ /var/www/html/
+chmod 777 /var/lib/php/session
+chmod 777 /var/opt/remi/php70/lib/php/session
