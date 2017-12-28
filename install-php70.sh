@@ -117,7 +117,7 @@
     echo "Relance Apache + PHP-FPM :"
 	echo ""
 	sudo systemctl restart nginx
-	sudo systemctl restart php-fpm 
+	sudo systemctl restart php70-php-fpm 
 	echo ""
 	echo ""
 	sudo systemctl status nginx
