@@ -26,10 +26,14 @@
     echo "Arret du Firewall :"
 	echo ""
 	sudo systemctl stop firewalld
+	sudo systemctl disabled firewalld
 	echo ""
 	sudo systemctl status firewalld
 	echo ""
 	echo "Vérifixation de SeLinux :"
+	echo ""
+	sudo sudo sed -i 's/enforcing/disabled/' /etc/selinux/config
+	sudo sudo sed -i 's/permissive/disabled/' /etc/selinux/config
 	echo ""
 	sudo sestatus
 	echo ""
