@@ -17,7 +17,7 @@
 	sudo yum -y update
 	sudo yum -y upgrade
 	sudo yum -y groupinstall "Development Tools" 
-	sudo yum -y install gmp-devel mysql-devel curl-devel libidn-devel libssh2-devel python-devel openldap-devel vim memcached wget git epel-release net-tools
+	sudo yum -y install gmp-devel mysql-devel curl-devel libidn-devel libssh2-devel python-devel openldap-devel vim memcached wget git epel-release net-tools bind-utils
 	echo ""
     echo "Arret du Firewall :"
 	echo ""
