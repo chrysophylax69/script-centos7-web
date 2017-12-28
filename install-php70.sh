@@ -44,12 +44,12 @@
 	sleep 3
 	sudo yum -y install nginx
 	echo ""
-	systemctl start nginx.service
-	systemctl enable nginx.service
+	systemctl start nginx
+	systemctl enable nginx
 	echo ""
     echo "Vérification de NGINX :"
 	echo ""
-	sudo systemctl status nginx.service
+	sudo systemctl status nginx
 	echo ""
 	sleep 5
 	clear
@@ -67,7 +67,7 @@
 	echo ""
     echo "Vérification de DB :"
 	echo ""
-	sudo systemctl status mariadb.service
+	sudo systemctl status mariadb
 	echo "Mise en route DB :"
 	sudo mysql_secure_installation
 	echo ""
@@ -83,14 +83,8 @@
 	sudo yum -y install php70 php70-php-mysqlnd php70-php-common php70-php-fpm php70-php-gd php70-php-ldap php70-php-odbc php70-php-pear php70-php-xml php70-php-xmlrpc php70-php-mbstring php70-php-snmp php70-php-soap php70-php-mcrypt
 	#sudo systemctl start memcached
 	#sudo systemctl enable memcached
-	sudo systemctl start php-fpm
-	sudo systemctl enable php-fpm
-	echo ""
-    echo "Vérification de Memcache :"
-	echo ""
-	#sudo systemctl status memcached
-	echo ""
-	sudo systemctl status php-fpm
+	sudo systemctl start systemctl start php70-php-fpm
+	sudo systemctl enable systemctl start php70-php-fpm
 	echo ""
 	sleep 5
 	clear
@@ -102,7 +96,7 @@
     echo "Installation APC :"
     echo ""
 	sleep 3
-	sudo yum -y install php-pear php-devel pcre-devel gcc make
+	sudo yum -y install php70-php-devel pcre-devel gcc make
 	cd
 	sudo pecl install apc
 	echo "extension=apc.so" >> /etc/php.d/apc.ini
@@ -128,7 +122,7 @@
 	echo ""
 	sudo systemctl status nginx
 	echo ""
-	sudo systemctl status php-fpm
+	sudo systemctl status systemctl start php70-php-fpm
 	echo ""
 	sudo systemctl status memcached
 	echo ""
