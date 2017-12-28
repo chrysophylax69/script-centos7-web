@@ -1,6 +1,8 @@
 # script-centos-web
 Script Install Auto CentOS 7 => 
+
 Installation automatique : Nginx - MariaDB - PHP - PhpMyAdmin - APC
+
 
 php 5.4 => sudo ./install.sh
 
