@@ -44,19 +44,18 @@
 	sleep 3
 	sudo yum -y install nginx
 	echo ""
-	systemctl start nginx.service
-	systemctl enable nginx.service
+	sudo systemctl start nginx
+	sudo systemctl enable nginx
 	echo ""
     echo "Vérification de NGINX :"
 	echo ""
-	sudo systemctl status nginx.service
+	sudo systemctl status nginx
 	echo ""
 	sleep 5
 	clear
 	
 		
 	# Installation DB (MariaDB)
-	clear
 	echo ""
     echo "Installation MariaDB :"
     echo ""
@@ -67,7 +66,7 @@
 	echo ""
     echo "Vérification de DB :"
 	echo ""
-	sudo systemctl status mariadb.service
+	sudo systemctl status mariadb
 	echo "Mise en route DB :"
 	sudo mysql_secure_installation
 	echo ""
@@ -75,7 +74,6 @@
 	clear
 	
 	# Installation PHP
-	clear
 	echo ""
     echo "Installation PHP :"
     echo ""
@@ -97,7 +95,6 @@
 	
 	
 	# Installation APC
-	clear
 	echo ""
     echo "Installation APC :"
     echo ""
@@ -112,7 +109,6 @@
 	
 	
 	# Installation phpMyAdmin
-	clear
 	echo ""
     echo "Installation phpMyAdmin :"
     echo ""
