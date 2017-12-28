@@ -17,6 +17,7 @@
 	sleep 3
 	
 	sudo yum -y install epel-release
+	sudo yum -y install wget
 	sudo yum -y update
 	sudo yum -y upgrade
 	if [[ ("$PHP7" == "y" || "$PHP7" == "Y") ]]; then
