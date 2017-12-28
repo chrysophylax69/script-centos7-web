@@ -72,6 +72,7 @@
     echo "Vérification de DB :"
 	echo ""
 	sudo systemctl status mariadb
+	echo ""
 	echo "Mise en route DB :"
 	sudo mysql_secure_installation
 	echo ""
