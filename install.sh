@@ -94,7 +94,7 @@
 	sudo systemctl start php70-php-fpm
 	sudo systemctl enable php70-php-fpm
 	fi
-	sudo yum -y install php php-mysql php-common php-fpm php-gd php-ldap php-odbc php-pear php-xml php-xmlrpc php-mbstring php-snmp php-soap php-mcrypt curl curl-devel php-pecl-memcache
+	sudo yum -y install php php-mysql php-common php-fpm php-gd php-ldap php-odbc php-pear php-xml php-xmlrpc php-mbstring php-snmp php-soap php-mcrypt curl curl-devel php-pecl-memcache php-imap php-cli ImageMagick ruby-libs php-intl php-pspell php-recode php-tidy php-pecl-imagick
 	sudo systemctl start memcached
 	sudo systemctl enable memcached
 	sudo systemctl start php-fpm
