@@ -33,8 +33,8 @@
 	echo ""
 	echo "Vérifixation de SeLinux :"
 	echo ""
-	sudo sudo sed -i 's/enforcing/disabled/' /etc/selinux/config
-	sudo sudo sed -i 's/permissive/disabled/' /etc/selinux/config
+	sudo sed -i 's/enforcing/disabled/' /etc/selinux/config
+	sudo sed -i 's/permissive/disabled/' /etc/selinux/config
 	echo ""
 	sudo sestatus
 	echo ""
