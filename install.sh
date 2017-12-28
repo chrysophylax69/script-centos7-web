@@ -18,13 +18,13 @@
 	
 	sudo yum -y install epel-release
 	sudo yum -y install wget
-	sudo yum -y update
-	sudo yum -y upgrade
 	if [[ ("$PHP7" == "y" || "$PHP7" == "Y") ]]; then
 	sudo wget -q http://rpms.remirepo.net/enterprise/remi-release-7.rpm
-	sudo wget -q https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
-	sudo rpm -Uvh remi-release-7.rpm epel-release-latest-7.noarch.rpm
+	sudo rpm -Uvh remi-release-7.rpm
+	sudo yum-config-manager --enable remi-php70
 	fi
+	sudo yum -y update
+	sudo yum -y upgrade
 	sudo yum -y groupinstall "Development Tools" 
 	sudo yum -y install gmp-devel mysql-devel curl-devel libidn-devel libssh2-devel python-devel openldap-devel vim memcached wget git net-tools bind-utils
 	echo ""
