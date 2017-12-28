@@ -83,8 +83,8 @@
 	sudo yum -y install php70 php70-php-mysqlnd php70-php-common php70-php-fpm php70-php-gd php70-php-ldap php70-php-odbc php70-php-pear php70-php-xml php70-php-xmlrpc php70-php-mbstring php70-php-snmp php70-php-soap php70-php-mcrypt
 	#sudo systemctl start memcached
 	#sudo systemctl enable memcached
-	sudo systemctl start systemctl start php70-php-fpm
-	sudo systemctl enable systemctl start php70-php-fpm
+	sudo systemctl start php70-php-fpm
+	sudo systemctl enable php70-php-fpm
 	echo ""
 	sleep 5
 	clear
