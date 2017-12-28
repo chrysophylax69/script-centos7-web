@@ -122,7 +122,7 @@
 	echo ""
 	sudo systemctl status nginx
 	echo ""
-	sudo systemctl status systemctl start php70-php-fpm
+	sudo systemctl status php70-php-fpm
 	echo ""
 	sudo systemctl status memcached
 	echo ""
