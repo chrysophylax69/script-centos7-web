@@ -79,10 +79,14 @@
 	sudo yum -y install php php-mysql php-common php-fpm php-gd php-ldap php-odbc php-pear php-xml php-xmlrpc php-mbstring php-snmp php-soap php-mcrypt curl curl-devel php-memcache
 	sudo systemctl start memcached
 	sudo systemctl enable memcached
+	sudo systemctl start php-fpm
+	sudo systemctl enable php-fpm
 	echo ""
     echo "Vérification de Memcache :"
 	echo ""
 	sudo systemctl status memcached
+	echo ""
+	sudo systemctl status php-fpm
 	echo ""
 	sleep 5
 	clear
