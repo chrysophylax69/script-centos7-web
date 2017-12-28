@@ -48,8 +48,8 @@
 	sleep 3
 	sudo yum -y install nginx
 	echo ""
-	systemctl start nginx
-	systemctl enable nginx
+	sudo systemctl start nginx
+	sudo systemctl enable nginx
 	echo ""
     echo "Vérification de NGINX :"
 	echo ""
@@ -60,7 +60,6 @@
 	
 		
 	# Installation DB (MariaDB)
-	clear
 	echo ""
     echo "Installation MariaDB :"
     echo ""
@@ -79,7 +78,6 @@
 	clear
 	
 	# Installation PHP
-	clear
 	echo ""
     echo "Installation PHP :"
     echo ""
@@ -90,12 +88,15 @@
 	sudo systemctl start php70-php-fpm
 	sudo systemctl enable php70-php-fpm
 	echo ""
+    echo "Vérification de Memcache :"
+	echo ""
+	sudo systemctl status php70-php-fpm
+	echo ""
 	sleep 5
 	clear
 	
 	
 	# Installation APC
-	clear
 	echo ""
     echo "Installation APC :"
     echo ""
@@ -110,7 +111,6 @@
 	
 	
 	# Installation phpMyAdmin
-	clear
 	echo ""
     echo "Installation phpMyAdmin :"
     echo ""
@@ -127,8 +127,6 @@
 	sudo systemctl status nginx
 	echo ""
 	sudo systemctl status php70-php-fpm
-	echo ""
-	sudo systemctl status memcached
 	echo ""
 	echo ""
 	echo "Installation Finish. Voir le readme pour la conf."
