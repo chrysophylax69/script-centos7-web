@@ -16,7 +16,7 @@
 	read -e -p "Installation avec PHP 7 ? [y/N] : " PHP7
 	sleep 3
 	
-	sudo yum -y epel-release
+	sudo yum -y install epel-release
 	sudo yum -y update
 	sudo yum -y upgrade
 	if [[ ("$PHP7" == "y" || "$PHP7" == "Y") ]]; then
