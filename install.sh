@@ -14,6 +14,7 @@ echo "Updating system and installing required packages."
 echo ""
 echo ""
 read -e -p "Installation avec PHP 7 ? [y/N] : " PHP7
+read -e -p "Installation avec Apache (nginx par defaut) ? [y/N] : " WEBSERV
 sleep 3
 	
 sudo yum -y install epel-release
@@ -49,8 +50,25 @@ sleep 5
 clear
 
 
-# Installation NGINX
+# Installation WEBSERV
 
+if [[ ("$WEBSERV" == "y" || "$WEBSERV" == "Y") ]]; then
+echo ""
+echo "Installation Apache :"
+echo ""
+sleep 3
+sudo yum -y install httpd
+echo ""
+sudo systemctl start httpd
+sudo systemctl enable httpd
+echo ""
+echo "Vérification de Apache :"
+echo ""
+sudo systemctl status httpd
+echo ""
+sleep 5
+clear
+else
 echo ""
 echo "Installation NGINX :"
 echo ""
@@ -66,6 +84,7 @@ sudo systemctl status nginx
 echo ""
 sleep 5
 clear
+fi
 
 
 # Installation DB (MariaDB)
@@ -162,19 +181,31 @@ sudo yum -y install phpMyAdmin
 fi
 sudo touch /var/www/html/info.php
 sudo echo "<?php phpinfo(); ?>" |sudo tee  /var/www/html/info.php
-sudo cp /usr/share/nginx/html/index.html /var/www/html/
+sudo touch /var/www/html/index.html
+sudo echo "TEST OK" |sudo tee  /var/www/html/index.html
 echo ""
 sleep 5
 clear
 
 # Verif config
+
+if [[ ("$WEBSERV" == "y" || "$WEBSERV" == "Y") ]]; then
 echo ""
 echo "Relance Apache + PHP-FPM :"
+echo ""
+sleep 3
+sudo systemctl restart httpd
+echo ""
+echo ""
+else
+echo ""
+echo "Relance Nginx + PHP-FPM :"
 echo ""
 sleep 3
 sudo systemctl restart nginx
 echo ""
 echo ""
+fi
 
 if [[ ("$PHP7" == "y" || "$PHP7" == "Y") ]]; then
 sudo systemctl restart php70-php-fpm
@@ -183,7 +214,11 @@ sudo systemctl restart php-fpm
 fi
 echo ""
 echo ""
+if [[ ("$WEBSERV" == "y" || "$WEBSERV" == "Y") ]]; then
+sudo systemctl status httpd
+else
 sudo systemctl status nginx
+fi
 echo ""
 echo ""
 
