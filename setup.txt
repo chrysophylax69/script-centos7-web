@@ -53,6 +53,9 @@ ln -s /usr/share/phpMyAdmin/ /var/www/html/
 chmod 777 /var/lib/php/session
 chown -R nginx:nginx /var/www/html
 
+systemctl restart nginx
+systemctl restart php-fpm
+
 
 ************ PHP 7.0 ************
 $ wget -q http://rpms.remirepo.net/enterprise/remi-release-7.rpm
