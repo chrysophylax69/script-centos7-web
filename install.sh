@@ -18,6 +18,7 @@ sleep 3
 	
 sudo yum -y install epel-release
 sudo yum -y install wget
+sudo yum -y update
 
 if [[ ("$PHP7" == "y" || "$PHP7" == "Y") ]]; then
 sudo wget -q http://rpms.remirepo.net/enterprise/remi-release-7.rpm
@@ -28,7 +29,7 @@ fi
 sudo yum -y update
 sudo yum -y upgrade
 sudo yum -y groupinstall "Development Tools" 
-sudo yum -y install gmp-devel mysql-devel curl-devel libidn-devel libssh2-devel python-devel openldap-devel vim memcached wget git net-tools bind-utils
+sudo yum -y install gmp-devel mariadb-devel curl-devel libidn-devel libssh2-devel python-devel openldap-devel vim memcached wget git net-tools bind-utils gcc make
 echo ""
 echo "Arret du Firewall :"
 echo ""
@@ -128,7 +129,10 @@ echo ""
 echo "Installation APC :"
 echo ""
 sleep 3
-sudo yum -y install php-pear php-devel pcre-devel gcc make
+if [[ ("$PHP7" == "y" || "$PHP7" == "Y") ]]; then
+sudo yum -y install php70-php-devel pcre-devel
+else
+sudo yum -y install php-devel pcre-devel
 cd
 sudo pecl install apc
 echo "extension=apc.so" >> /etc/php.d/apc.ini
