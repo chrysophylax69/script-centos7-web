@@ -48,6 +48,7 @@ group = nginx
 phpmyadmin =>
 ln -s /usr/share/phpMyAdmin/ /var/www/html/
 chmod 777 /var/lib/php/session
+chown -R nginx:nginx /var/www/html
 
 
 ************ PHP 7.0 ************
@@ -84,7 +85,7 @@ server {
 
     location ~ \.php$ {
         try_files $uri =404;
-        fastcgi_pass unix:/var/run/php-fpm/php-fpm.sock;
+        fastcgi_pass unix:/var/opt/remi/php70/run/php-fpm/php-fpm.sock;
         fastcgi_index index.php;
         fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
         include fastcgi_params;
@@ -108,5 +109,4 @@ pid = /var/opt/remi/php70/run/php-fpm/php-fpm.pid
 
 phpmyadmin =>
 ln -s /usr/share/phpMyAdmin/ /var/www/html/
-chmod 777 /var/lib/php/session
 chmod 777 /var/opt/remi/php70/lib/php/session
