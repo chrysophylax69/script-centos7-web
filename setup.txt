@@ -3,6 +3,7 @@ mkdir /etc/nginx/sites-available
 mkdir /etc/nginx/sites-enabled
 
 vim /etc/nginx/nginx.conf (Add these lines to the end of the http {} block, then save the file:)
+modifier ": root         /var/www/html;"
 include /etc/nginx/sites-enabled/*.conf;
 server_names_hash_bucket_size 64;
 
@@ -64,6 +65,7 @@ mkdir /etc/nginx/sites-available
 mkdir /etc/nginx/sites-enabled
 
 vim /etc/nginx/nginx.conf (Add these lines to the end of the http {} block, then save the file:)
+modifier ": root         /var/www/html;"
 include /etc/nginx/sites-enabled/*.conf;
 server_names_hash_bucket_size 64;
 
