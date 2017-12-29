@@ -101,7 +101,7 @@ server {
 
 ln -s /etc/nginx/sites-available/nginxsite.com.conf /etc/nginx/sites-enabled/nginxsite.com.conf
 
-vim /etc/php.ini
+vim /etc/opt/remi/php70/php.ini
 cgi.fix_pathinfo=0
 
 vim /etc/opt/remi/php70/php-fpm.d/www.conf
@@ -120,3 +120,5 @@ ln -s /usr/share/phpMyAdmin/ /var/www/html/
 chmod 777 /var/opt/remi/php70/lib/php/session
 chown -R nginx:nginx /var/www/html
 
+systemctl restart nginx
+systemctl restart php70-php-fpm
