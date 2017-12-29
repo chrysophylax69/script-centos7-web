@@ -160,6 +160,7 @@ else
 sudo yum -y install phpMyAdmin
 fi
 sudo echo "<?php phpinfo(); ?>" >> /var/www/html/info.php
+sudo cp /usr/share/nginx/html/index.html /var/www/html/
 echo ""
 sleep 5
 clear
