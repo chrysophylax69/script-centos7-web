@@ -133,7 +133,7 @@ if [[ ("$PHP7" == "y" || "$PHP7" == "Y") ]]; then
 sudo yum -y install php70-php-devel pcre-devel
 else
 sudo yum -y install php-devel pcre-devel
-cd
+fi
 sudo pecl install apc
 echo "extension=apc.so" >> /etc/php.d/apc.ini
 echo ""
