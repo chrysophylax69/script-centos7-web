@@ -129,6 +129,7 @@ echo ""
 echo "Installation APC :"
 echo ""
 sleep 3
+
 if [[ ("$PHP7" == "y" || "$PHP7" == "Y") ]]; then
 sudo yum -y install php70-php-devel pcre-devel
 else
