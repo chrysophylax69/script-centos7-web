@@ -147,6 +147,7 @@ echo ""
 echo "Installation phpMyAdmin :"
 echo ""
 sleep 3
+
 if [[ ("$PHP7" == "y" || "$PHP7" == "Y") ]]; then
 sudo wget https://files.phpmyadmin.net/phpMyAdmin/4.7.7/phpMyAdmin-4.7.7-all-languages.tar.gz
 sudo tar xvfz phpMyAdmin-4.7.7-all-languages.tar.gz
@@ -158,10 +159,17 @@ else
 sudo yum -y install phpMyAdmin
 fi
 echo ""
+sleep 5
+clear
+
+# Verif config
 echo ""
 echo "Relance Apache + PHP-FPM :"
 echo ""
+sleep 3
 sudo systemctl restart nginx
+echo ""
+echo ""
 
 if [[ ("$PHP7" == "y" || "$PHP7" == "Y") ]]; then
 sudo systemctl restart php70-php-fpm
@@ -172,12 +180,14 @@ echo ""
 echo ""
 sudo systemctl status nginx
 echo ""
+echo ""
 
 if [[ ("$PHP7" == "y" || "$PHP7" == "Y") ]]; then
 sudo systemctl status php70-php-fpm
 else
 sudo systemctl status php-fpm
 fi
+echo ""
 echo ""
 sudo systemctl status memcached
 echo ""
