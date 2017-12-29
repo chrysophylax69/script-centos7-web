@@ -147,7 +147,16 @@ echo ""
 echo "Installation phpMyAdmin :"
 echo ""
 sleep 3
+if [[ ("$PHP7" == "y" || "$PHP7" == "Y") ]]; then
+sudo wget https://files.phpmyadmin.net/phpMyAdmin/4.7.7/phpMyAdmin-4.7.7-all-languages.tar.gz
+sudo tar xvfz phpMyAdmin-4.7.7-all-languages.tar.gz
+sudo mv phpMyAdmin-4.7.7-all-languages phpmyadmin
+sudo mv phpmyadmin/ /usr/share/
+chown -R nobody.nobody /usr/share/phpmyadmin
+sudo cp /usr/share/phpmyadmin/config.sample.inc.php /usr/share/phpmyadmin/config.inc.php
+else
 sudo yum -y install phpMyAdmin
+fi
 echo ""
 echo ""
 echo "Relance Apache + PHP-FPM :"
