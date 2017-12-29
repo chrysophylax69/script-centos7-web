@@ -190,17 +190,18 @@ echo ""
 sleep 3
 
 if [[ ("$PHP7" == "y" || "$PHP7" == "Y") ]]; then
-sudo mkdir /var/www/
-sudo mkdir /var/www/html
-sudo wget https://files.phpmyadmin.net/phpMyAdmin/4.7.7/phpMyAdmin-4.7.7-all-languages.tar.gz
-sudo tar xvfz phpMyAdmin-4.7.7-all-languages.tar.gz
-sudo mv phpMyAdmin-4.7.7-all-languages phpmyadmin
-sudo mv phpmyadmin/ /var/www/html/
-chown -R nobody.nobody /var/www/html/phpmyadmin
-sudo cp /var/www/html/phpmyadmin/config.sample.inc.php /var/www/html/phpmyadmin/config.inc.php
+	sudo mkdir /var/www/
+	sudo mkdir /var/www/html
+	sudo wget https://files.phpmyadmin.net/phpMyAdmin/4.7.7/phpMyAdmin-4.7.7-all-languages.tar.gz
+	sudo tar xvfz phpMyAdmin-4.7.7-all-languages.tar.gz
+	sudo mv phpMyAdmin-4.7.7-all-languages phpmyadmin
+	sudo mv phpmyadmin/ /var/www/html/
+	chown -R nobody.nobody /var/www/html/phpmyadmin
+	sudo cp /var/www/html/phpmyadmin/config.sample.inc.php /var/www/html/phpmyadmin/config.inc.php
 else
-sudo yum -y install phpMyAdmin
+	sudo yum -y install phpMyAdmin
 fi
+
 sudo touch /var/www/html/info.php
 sudo echo "<?php phpinfo(); ?>" |sudo tee  /var/www/html/info.php
 sudo touch /var/www/html/index.html
