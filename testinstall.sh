@@ -53,37 +53,37 @@ clear
 # Installation WEBSERV
 
 if [[ ("$WEBSERV" == "y" || "$WEBSERV" == "Y") ]]; then
-echo ""
-echo "Installation Apache :"
-echo ""
-sleep 3
-sudo yum -y install httpd
-echo ""
-sudo systemctl start httpd
-sudo systemctl enable httpd
-echo ""
-echo "Vérification de Apache :"
-echo ""
-sudo systemctl status httpd
-echo ""
-sleep 5
-clear
+	echo ""
+	echo "Installation Apache :"
+	echo ""
+	sleep 3
+	sudo yum -y install httpd
+	echo ""
+	sudo systemctl start httpd
+	sudo systemctl enable httpd
+	echo ""
+	echo "Vérification de Apache :"
+	echo ""
+	sudo systemctl status httpd
+	echo ""
+	sleep 5
+	clear
 else
-echo ""
-echo "Installation NGINX :"
-echo ""
-sleep 3
-sudo yum -y install nginx
-echo ""
-sudo systemctl start nginx
-sudo systemctl enable nginx
-echo ""
-echo "Vérification de NGINX :"
-echo ""
-sudo systemctl status nginx
-echo ""
-sleep 5
-clear
+	echo ""
+	echo "Installation NGINX :"
+	echo ""
+	sleep 3
+	sudo yum -y install nginx
+	echo ""
+	sudo systemctl start nginx
+	sudo systemctl enable nginx
+	echo ""
+	echo "Vérification de NGINX :"
+	echo ""
+	sudo systemctl status nginx
+	echo ""
+	sleep 5
+	clear
 fi
 
 
@@ -128,15 +128,15 @@ if [[ ("$PHP7" == "y" || "$PHP7" == "Y") ]]; then
 	fi
 else		
 	if [[ ("$WEBSERV" == "y" || "$WEBSERV" == "Y") ]]; then
-	sudo yum -y install php php-devel php-mysql php-common php-gd php-ldap php-odbc php-pear php-xml php-xmlrpc php-mbstring php-snmp php-soap php-mcrypt curl curl-devel php-pecl-memcache php-imap php-cli ImageMagick ruby-libs php-intl php-pspell php-recode php-tidy php-pecl-imagick
-	sudo systemctl start memcached
-	sudo systemctl enable memcached	
+		sudo yum -y install php php-devel php-mysql php-common php-gd php-ldap php-odbc php-pear php-xml php-xmlrpc php-mbstring php-snmp php-soap php-mcrypt curl curl-devel php-pecl-memcache php-imap php-cli ImageMagick ruby-libs php-intl php-pspell php-recode php-tidy php-pecl-imagick
+		sudo systemctl start memcached
+		sudo systemctl enable memcached	
 	else
-	sudo yum -y install php php-devel php-mysql php-common php-fpm php-gd php-ldap php-odbc php-pear php-xml php-xmlrpc php-mbstring php-snmp php-soap php-mcrypt curl curl-devel php-pecl-memcache php-imap php-cli ImageMagick ruby-libs php-intl php-pspell php-recode php-tidy php-pecl-imagick
-	sudo systemctl start memcached
-	sudo systemctl enable memcached
-	sudo systemctl start php-fpm
-	sudo systemctl enable php-fpm
+		sudo yum -y install php php-devel php-mysql php-common php-fpm php-gd php-ldap php-odbc php-pear php-xml php-xmlrpc php-mbstring php-snmp php-soap php-mcrypt curl curl-devel php-pecl-memcache php-imap php-cli ImageMagick ruby-libs php-intl php-pspell php-recode php-tidy php-pecl-imagick
+		sudo systemctl start memcached
+		sudo systemctl enable memcached
+		sudo systemctl start php-fpm
+		sudo systemctl enable php-fpm
 	fi
 fi
 
@@ -149,15 +149,15 @@ echo ""
 
 if [[ ("$PHP7" == "y" || "$PHP7" == "Y") ]]; then
 	if [[ ("$WEBSERV" == "y" || "$WEBSERV" == "Y") ]]; then
-	echo ""
+		echo ""
 	else
-	sudo systemctl status php70-php-fpm
+		sudo systemctl status php70-php-fpm
 	fi
 else
 	if [[ ("$WEBSERV" == "y" || "$WEBSERV" == "Y") ]]; then
-	echo ""
+		echo ""
 	else
-	sudo systemctl status php-fpm
+		sudo systemctl status php-fpm
 	fi
 fi
 echo ""
@@ -212,34 +212,34 @@ clear
 # Verif config
 
 if [[ ("$WEBSERV" == "y" || "$WEBSERV" == "Y") ]]; then
-echo ""
-echo "Relance Apache + PHP-FPM :"
-echo ""
-sleep 3
-sudo systemctl restart httpd
-echo ""
-echo ""
+	echo ""
+	echo "Relance Apache :"
+	echo ""
+	sleep 3
+	sudo systemctl restart httpd
+	echo ""
+	echo ""
 else
-echo ""
-echo "Relance Nginx + PHP-FPM :"
-echo ""
-sleep 3
-sudo systemctl restart nginx
-echo ""
-echo ""
+	echo ""
+	echo "Relance Nginx + PHP-FPM :"
+	echo ""
+	sleep 3
+	sudo systemctl restart nginx
+	echo ""
+	echo ""
 fi
 
 if [[ ("$PHP7" == "y" || "$PHP7" == "Y") ]]; then
 	if [[ ("$WEBSERV" == "y" || "$WEBSERV" == "Y") ]]; then
-	echo ""
+		echo ""
 	else
-    sudo systemctl restart php70-php-fpm
+		sudo systemctl restart php70-php-fpm
 	fi
 else
 	if [[ ("$WEBSERV" == "y" || "$WEBSERV" == "Y") ]]; then
-	echo ""
+		echo ""
 	else
-	sudo systemctl restart php-fpm
+		sudo systemctl restart php-fpm
 	fi
 fi
 	
@@ -247,24 +247,24 @@ echo ""
 echo ""
 
 if [[ ("$WEBSERV" == "y" || "$WEBSERV" == "Y") ]]; then
-sudo systemctl status httpd
+	sudo systemctl status httpd
 else
-sudo systemctl status nginx
+	sudo systemctl status nginx
 fi
 echo ""
 echo ""
 
 if [[ ("$PHP7" == "y" || "$PHP7" == "Y") ]]; then
 	if [[ ("$WEBSERV" == "y" || "$WEBSERV" == "Y") ]]; then
-	echo ""
+		echo ""
 	else
-	sudo systemctl status php70-php-fpm
+		sudo systemctl status php70-php-fpm
 	fi
 else
 	if [[ ("$WEBSERV" == "y" || "$WEBSERV" == "Y") ]]; then
-	echo ""
+		echo ""
 	else
-	sudo systemctl status php-fpm
+		sudo systemctl status php-fpm
 	fi
 fi
 echo ""
