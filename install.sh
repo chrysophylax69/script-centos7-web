@@ -125,21 +125,21 @@ clear
 
 
 # Installation APC
-echo ""
-echo "Installation APC :"
-echo ""
-sleep 3
+#echo ""
+#echo "Installation APC :"
+#echo ""
+#sleep 3
 
-if [[ ("$PHP7" == "y" || "$PHP7" == "Y") ]]; then
-sudo yum -y install php70-php-devel pcre-devel
-else
-sudo yum -y install php-devel pcre-devel
-fi
-sudo pecl install apc
-echo "extension=apc.so" >> /etc/php.d/apc.ini
-echo ""
-sleep 5
-clear
+#if [[ ("$PHP7" == "y" || "$PHP7" == "Y") ]]; then
+#sudo yum -y install php70-php-devel pcre-devel
+#else
+#sudo yum -y install php-devel pcre-devel
+#fi
+#sudo pecl install apc
+#echo "extension=apc.so" >> /etc/php.d/apc.ini
+#echo ""
+#sleep 5
+#clear
 
 
 # Installation phpMyAdmin
