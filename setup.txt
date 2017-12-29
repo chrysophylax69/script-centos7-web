@@ -1,12 +1,12 @@
 ************ PHP 5.4 ************
 mkdir /etc/nginx/sites-available
 mkdir /etc/nginx/sites-enabled
+
 vim /etc/nginx/nginx.conf (Add these lines to the end of the http {} block, then save the file:)
 include /etc/nginx/sites-enabled/*.conf;
 server_names_hash_bucket_size 64;
 
 vim /etc/nginx/sites-available/nginxsite.com.conf =>
-
 server {
     listen       80;
     server_name  192.168.1.xxx;
@@ -48,6 +48,7 @@ group = nginx
 
 phpmyadmin =>
 ln -s /usr/share/phpMyAdmin/ /var/www/html/
+
 chmod 777 /var/lib/php/session
 chown -R nginx:nginx /var/www/html
 
@@ -61,18 +62,18 @@ systemctl restart php70-php-fpm
 
 mkdir /etc/nginx/sites-available
 mkdir /etc/nginx/sites-enabled
+
 vim /etc/nginx/nginx.conf (Add these lines to the end of the http {} block, then save the file:)
 include /etc/nginx/sites-enabled/*.conf;
 server_names_hash_bucket_size 64;
 
 vim /etc/nginx/sites-available/nginxsite.com.conf =>
-
 server {
     listen       80;
-    server_name  server_domain_name_or_IP;
+    server_name  192.168.1.xxx;
 
     # note that these lines are originally from the "location /" block
-    root   /usr/share/nginx/html;
+    root   /var/www/html;
     index index.php index.html index.htm;
 
     location / {
@@ -81,7 +82,7 @@ server {
     error_page 404 /404.html;
     error_page 500 502 503 504 /50x.html;
     location = /50x.html {
-        root /usr/share/nginx/html;
+        root /var/www/html;
     }
 
     location ~ \.php$ {
@@ -110,9 +111,7 @@ pid = /var/opt/remi/php70/run/php-fpm/php-fpm.pid
 
 phpmyadmin =>
 ln -s /usr/share/phpMyAdmin/ /var/www/html/
-<<<<<<< HEAD
+
 chmod 777 /var/opt/remi/php70/lib/php/session
-=======
-chmod 777 /var/lib/php/session
-chmod 777 /var/opt/remi/php70/lib/php/session
->>>>>>> d33cae67b76e63a1c0a908046d6163a5c8d4025f
+chown -R nginx:nginx /var/www/html
+
