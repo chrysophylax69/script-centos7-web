@@ -9,10 +9,10 @@ vim /etc/nginx/sites-available/nginxsite.com.conf =>
 
 server {
     listen       80;
-    server_name  server_domain_name_or_IP;
+    server_name  192.168.1.xxx;
 
     # note that these lines are originally from the "location /" block
-    root   /usr/share/nginx/html;
+    root   /var/www/html;
     index index.php index.html index.htm;
 
     location / {
@@ -21,7 +21,7 @@ server {
     error_page 404 /404.html;
     error_page 500 502 503 504 /50x.html;
     location = /50x.html {
-        root /usr/share/nginx/html;
+        root /var/www/html;
     }
 
     location ~ \.php$ {
@@ -32,6 +32,7 @@ server {
         include fastcgi_params;
     }
 }
+
 
 ln -s /etc/nginx/sites-available/nginxsite.com.conf /etc/nginx/sites-enabled/nginxsite.com.conf
 
