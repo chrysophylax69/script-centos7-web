@@ -230,12 +230,22 @@ echo ""
 fi
 
 if [[ ("$PHP7" == "y" || "$PHP7" == "Y") ]]; then
-sudo systemctl restart php70-php-fpm
+	if [[ ("$WEBSERV" == "y" || "$WEBSERV" == "Y") ]]; then
+	echo ""
+	else
+    sudo systemctl restart php70-php-fpm
+	fi
 else
-sudo systemctl restart php-fpm
+	if [[ ("$WEBSERV" == "y" || "$WEBSERV" == "Y") ]]; then
+	echo ""
+	else
+	sudo systemctl restart php-fpm
+	fi
 fi
+	
 echo ""
 echo ""
+
 if [[ ("$WEBSERV" == "y" || "$WEBSERV" == "Y") ]]; then
 sudo systemctl status httpd
 else
@@ -245,9 +255,17 @@ echo ""
 echo ""
 
 if [[ ("$PHP7" == "y" || "$PHP7" == "Y") ]]; then
-sudo systemctl status php70-php-fpm
+	if [[ ("$WEBSERV" == "y" || "$WEBSERV" == "Y") ]]; then
+	echo ""
+	else
+	sudo systemctl status php70-php-fpm
+	fi
 else
-sudo systemctl status php-fpm
+	if [[ ("$WEBSERV" == "y" || "$WEBSERV" == "Y") ]]; then
+	echo ""
+	else
+	sudo systemctl status php-fpm
+	fi
 fi
 echo ""
 echo ""
