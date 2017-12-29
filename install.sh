@@ -94,12 +94,13 @@
 	sudo systemctl enable memcached
 	sudo systemctl start php70-php-fpm
 	sudo systemctl enable php70-php-fpm
-	fi
+	else
 	sudo yum -y install php php-mysql php-common php-fpm php-gd php-ldap php-odbc php-pear php-xml php-xmlrpc php-mbstring php-snmp php-soap php-mcrypt curl curl-devel php-pecl-memcache php-imap php-cli ImageMagick ruby-libs php-intl php-pspell php-recode php-tidy php-pecl-imagick
 	sudo systemctl start memcached
 	sudo systemctl enable memcached
 	sudo systemctl start php-fpm
 	sudo systemctl enable php-fpm
+	fi
 	echo ""
     echo "Vérification de Memcache :"
 	echo ""
@@ -107,8 +108,9 @@
 	echo ""
 	if [[ ("$PHP7" == "y" || "$PHP7" == "Y") ]]; then
 	sudo systemctl status php70-php-fpm
-	fi
+	else
 	sudo systemctl status php-fpm
+	fi
 	echo ""
 	sleep 5
 	clear
@@ -141,16 +143,18 @@
 	sudo systemctl restart nginx
 	if [[ ("$PHP7" == "y" || "$PHP7" == "Y") ]]; then
 	sudo systemctl restart php70-php-fpm
+	else
+	sudo systemctl restart php-fpm
 	fi
-	sudo systemctl restart php-fpm 
 	echo ""
 	echo ""
 	sudo systemctl status nginx
 	echo ""
 	if [[ ("$PHP7" == "y" || "$PHP7" == "Y") ]]; then
 	sudo systemctl status php70-php-fpm
-	fi
+	else
 	sudo systemctl status php-fpm
+	fi
 	echo ""
 	sudo systemctl status memcached
 	echo ""
