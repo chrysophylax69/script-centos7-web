@@ -111,13 +111,13 @@ if [[ ("$PHP7" == "y" || "$PHP7" == "Y") ]]; then
 	if [[ ("$WEBSERV" == "y" || "$WEBSERV" == "Y") ]]; then
 		sudo yum -y install wget
 		sudo rpm -Uvh https://mirror.webtatic.com/yum/el7/webtatic-release.rpm
-		sudo yum -y install php70w php70w-opcache php70w-devel php70w-mysqlnd php70w-common php70w-gd php70w-ldap php70w-odbc php70w-pear php70w-xml php70w-xmlrpc php70w-mbstring php70w-snmp php70w-soap php70w-mcrypt php70w-pecl-memcached php70w-imap php70w-cli php70w-intl php70w-pspell php70w-tidy php70w-pecl-imagick ImageMagick  ruby-libs php70w-bcmath
+		sudo yum -y install php70w php70w-opcache php70w-devel php70w-mysqlnd php70w-common php70w-gd php70w-ldap php70w-odbc php70w-pear php70w-xml php70w-xmlrpc php70w-mbstring php70w-snmp php70w-soap php70w-mcrypt php70w-imap php70w-cli php70w-intl php70w-pspell php70w-tidy php70w-pecl-imagick ImageMagick  ruby-libs php70w-bcmath
 		sudo systemctl start memcached
 		sudo systemctl enable memcached
 	else
 		sudo yum -y install wget
 		sudo rpm -Uvh https://mirror.webtatic.com/yum/el7/webtatic-release.rpm
-		sudo yum -y install php70w-fpm php70w-opcache php70w-devel php70w-mysqlnd php70w-common php70w-gd php70w-ldap php70w-odbc php70w-pear php70w-xml php70w-xmlrpc php70w-mbstring php70w-snmp php70w-soap php70w-mcrypt php70w-pecl-memcached php70w-imap php70w-cli php70w-intl php70w-pspell php70w-tidy php70w-pecl-imagick ImageMagick  ruby-libs php70w-bcmath
+		sudo yum -y install php70w-fpm php70w-opcache php70w-devel php70w-mysqlnd php70w-common php70w-gd php70w-ldap php70w-odbc php70w-pear php70w-xml php70w-xmlrpc php70w-mbstring php70w-snmp php70w-soap php70w-mcrypt php70w-imap php70w-cli php70w-intl php70w-pspell php70w-tidy php70w-pecl-imagick ImageMagick  ruby-libs php70w-bcmath
 		#sudo yum -y install php70 php70-php-devel php70-php-mysqlnd php70-php-common php70-php-fpm php70-php-gd php70-php-ldap php70-php-odbc php70-php-pear php70-php-xml php70-php-xmlrpc php70-php-mbstring php70-php-snmp php70-php-soap php70-php-mcrypt php70-php-pecl-memcache php70-php-opcache php70-php-imap php7.0-cli ImageMagick ruby-libs php70-php-intl php70-php-pspell php70-php-recode php70-php-tidy php70-php-pecl-imagick php70-php-pecl-zip
 		sudo systemctl start memcached
 		sudo systemctl enable memcached
@@ -126,11 +126,11 @@ if [[ ("$PHP7" == "y" || "$PHP7" == "Y") ]]; then
 	fi
 else		
 	if [[ ("$WEBSERV" == "y" || "$WEBSERV" == "Y") ]]; then
-		sudo yum -y install php php-devel php-mysql php-common php-pecl-memcached php-gd php-ldap php-odbc php-pear php-xml php-xmlrpc php-mbstring php-snmp php-soap php-mcrypt curl curl-devel php-imap php-cli ImageMagick ruby-libs php-intl php-pspell php-recode php-tidy php-pecl-imagick
+		sudo yum -y install php php-devel php-mysql php-common php-gd php-ldap php-odbc php-pear php-xml php-xmlrpc php-mbstring php-snmp php-soap php-mcrypt curl curl-devel php-imap php-cli ImageMagick ruby-libs php-intl php-pspell php-recode php-tidy php-pecl-imagick
 		sudo systemctl start memcached
 		sudo systemctl enable memcached	
 	else
-		sudo yum -y install php-fpm php-devel php-mysql php-common  php-gd php-ldap php-odbc php-pear php-xml php-xmlrpc php-mbstring php-snmp php-soap php-mcrypt curl curl-devel php-pecl-memcached php-imap php-cli ImageMagick ruby-libs php-intl php-pspell php-recode php-tidy php-pecl-imagick
+		sudo yum -y install php-fpm php-devel php-mysql php-common  php-gd php-ldap php-odbc php-pear php-xml php-xmlrpc php-mbstring php-snmp php-soap php-mcrypt curl curl-devel php-imap php-cli ImageMagick ruby-libs php-intl php-pspell php-recode php-tidy php-pecl-imagick
 		sudo systemctl start memcached
 		sudo systemctl enable memcached
 		sudo systemctl start php-fpm
