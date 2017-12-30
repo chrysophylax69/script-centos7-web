@@ -117,8 +117,9 @@ pid = /var/run/php-fpm/php-fpm.pid
 phpmyadmin =>
 ln -s /usr/share/phpMyAdmin/ /var/www/html/
 
-chmod 777 /var/opt/remi/php70/lib/php/session
+mkdir /var/lib/php/session
+chmod 777 /var/lib/php/session
 chown -R nginx:nginx /var/www/html
 
 systemctl restart nginx
-systemctl restart php70-php-fpm
+systemctl restart php-fpm
