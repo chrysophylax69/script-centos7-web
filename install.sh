@@ -190,24 +190,32 @@ echo "Installation phpMyAdmin :"
 echo ""
 sleep 3
 
-if [[ ("$WEBSERV" == "y" || "$WEBSERV" == "Y") ]]; then
-	sudo yum -y install phpMyAdmin
-else
-	sudo mkdir /var/www/
-	sudo mkdir /var/www/html
-	sudo wget https://files.phpmyadmin.net/phpMyAdmin/4.7.7/phpMyAdmin-4.7.7-all-languages.tar.gz
-	sudo tar xvfz phpMyAdmin-4.7.7-all-languages.tar.gz
-	sudo mv phpMyAdmin-4.7.7-all-languages phpmyadmin
-	sudo mv phpmyadmin/ /var/www/html/
-	sudo chown -R nobody.nobody /var/www/html/phpmyadmin
-	sudo cp /var/www/html/phpmyadmin/config.sample.inc.php /var/www/html/phpmyadmin/config.inc.php
-fi
+#if [[ ("$WEBSERV" == "y" || "$WEBSERV" == "Y") ]]; then
+#	sudo yum -y install phpMyAdmin
+#else
+#	sudo mkdir /var/www/
+#	sudo mkdir /var/www/html
+#	sudo wget https://files.phpmyadmin.net/phpMyAdmin/4.7.7/phpMyAdmin-4.7.7-all-languages.tar.gz
+#	sudo tar xvfz phpMyAdmin-4.7.7-all-languages.tar.gz
+#	sudo mv phpMyAdmin-4.7.7-all-languages phpmyadmin
+#	sudo mv phpmyadmin/ /var/www/html/
+#	sudo chown -R nobody.nobody /var/www/html/phpmyadmin
+#	sudo cp /var/www/html/phpmyadmin/config.sample.inc.php /var/www/html/phpmyadmin/config.inc.php
+#fi
 
-
+sudo yum -y install phpMyAdmin
 sudo touch /var/www/html/info.php
 sudo echo "<?php phpinfo(); ?>" |sudo tee  /var/www/html/info.php
 sudo touch /var/www/html/index.html
 sudo echo "TEST OK" |sudo tee  /var/www/html/index.html
+
+if [[ ("$WEBSERV" == "y" || "$WEBSERV" == "Y") ]]; then
+	echo ""
+else
+	ln -s /usr/share/phpMyAdmin/ /var/www/html/
+fi
+	
+
 echo ""
 sleep 5
 clear
