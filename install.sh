@@ -15,8 +15,11 @@ echo ""
 echo ""
 read -e -p "Installation avec PHP 7 ? [y/N] : " PHP7
 read -e -p "Installation avec Apache (nginx par defaut) ? [y/N] : " WEBSERV
+echo ""
+echo ""
 sleep 3
-	
+
+clear	
 sudo yum -y install epel-release
 sudo yum -y update
 sudo yum -y upgrade
@@ -57,8 +60,6 @@ if [[ ("$WEBSERV" == "y" || "$WEBSERV" == "Y") ]]; then
 	echo ""
 	sudo systemctl status httpd
 	echo ""
-	sleep 5
-	clear
 else
 	echo ""
 	echo "Installation NGINX :"
@@ -73,9 +74,10 @@ else
 	echo ""
 	sudo systemctl status nginx
 	echo ""
-	sleep 5
-	clear
 fi
+echo ""
+sleep 5
+clear
 
 
 # Installation DB (MariaDB)
@@ -230,19 +232,12 @@ else
 	echo ""
 fi
 
-if [[ ("$PHP7" == "y" || "$PHP7" == "Y") ]]; then
-	if [[ ("$WEBSERV" == "y" || "$WEBSERV" == "Y") ]]; then
+if [[ ("$WEBSERV" == "y" || "$WEBSERV" == "Y") ]]; then
 		echo ""
 	else
 		sudo systemctl restart php-fpm
-	fi
-else
-	if [[ ("$WEBSERV" == "y" || "$WEBSERV" == "Y") ]]; then
-		echo ""
-	else
-		sudo systemctl restart php-fpm
-	fi
 fi
+
 	
 echo ""
 echo ""
@@ -255,19 +250,12 @@ fi
 echo ""
 echo ""
 
-if [[ ("$PHP7" == "y" || "$PHP7" == "Y") ]]; then
-	if [[ ("$WEBSERV" == "y" || "$WEBSERV" == "Y") ]]; then
+if [[ ("$WEBSERV" == "y" || "$WEBSERV" == "Y") ]]; then
 		echo ""
 	else
 		sudo systemctl status php-fpm
-	fi
-else
-	if [[ ("$WEBSERV" == "y" || "$WEBSERV" == "Y") ]]; then
-		echo ""
-	else
-		sudo systemctl status php-fpm
-	fi
 fi
+
 echo ""
 #echo ""
 #sudo systemctl status memcached
