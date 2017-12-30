@@ -92,7 +92,7 @@ server {
 
     location ~ \.php$ {
         try_files $uri =404;
-        fastcgi_pass unix:/var/opt/remi/php70/run/php-fpm/php-fpm.sock;
+        fastcgi_pass unix:/var/run/php-fpm/php-fpm.sock;
         fastcgi_index index.php;
         fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
         include fastcgi_params;
@@ -101,18 +101,18 @@ server {
 
 ln -s /etc/nginx/sites-available/nginxsite.com.conf /etc/nginx/sites-enabled/nginxsite.com.conf
 
-vim /etc/opt/remi/php70/php.ini
+vim /etc/php.ini
 cgi.fix_pathinfo=0
 
-vim /etc/opt/remi/php70/php-fpm.d/www.conf
-listen = /var/opt/remi/php70/run/php-fpm/php-fpm.sock
+vim /etc/php-fpm.d/www.conf
+listen = /var/run/php-fpm/php-fpm.sock
 listen.owner = nginx (or nobody)
 listen.group = nginx (or nobody)
 user = nginx
 group = nginx
 
-vim /etc/opt/remi/php70/php-fpm.conf
-pid = /var/opt/remi/php70/run/php-fpm/php-fpm.pid
+vim /etc/php-fpm.conf
+pid = /var/run/php-fpm/php-fpm.pid
 
 phpmyadmin =>
 ln -s /usr/share/phpMyAdmin/ /var/www/html/
