@@ -142,7 +142,7 @@ sudo git clone https://github.com/websupport-sk/pecl-memcache.git
 sudo cd pecl-memcache && phpize && ./configure --disable-memcache-sasl && sudo make && sudo make install
 #sudo echo 'extension=memcached.so' >> /etc/php.ini
 sudo echo 'extension=memcache.so' >> /etc/php.ini
-cd ..
+sudo cd ..
 echo ""
 echo "Vérification de Memcached :"
 sudo php -m | grep memcache
