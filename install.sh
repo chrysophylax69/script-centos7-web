@@ -24,7 +24,7 @@ sudo yum -y install epel-release
 sudo yum -y update
 sudo yum -y upgrade
 sudo yum -y groupinstall "Development Tools" 
-sudo yum -y install gmp-devel curl-devel libidn-devel libssh2-devel python-devel openldap-devel vim git net-tools bind-utils gcc make
+sudo yum -y install gmp-devel curl-devel libidn-devel libssh2-devel python-devel openldap-devel vim git net-tools bind-utils gcc make wget
 echo ""
 echo "Arret du Firewall :"
 echo ""
