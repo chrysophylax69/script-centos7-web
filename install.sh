@@ -223,7 +223,7 @@ if [[ ("$WEBSERV" == "y" || "$WEBSERV" == "Y") ]]; then
 	echo ""
 	echo ""
 else
-		echo ""
+	echo ""
 	echo "Relance Nginx + PHP-FPM :"
 	echo ""
 	sleep 3
@@ -233,9 +233,9 @@ else
 fi
 
 if [[ ("$WEBSERV" == "y" || "$WEBSERV" == "Y") ]]; then
-		echo ""
-	else
-		sudo systemctl restart php-fpm
+	echo ""
+else
+	sudo systemctl restart php-fpm
 fi
 
 	
@@ -251,9 +251,9 @@ echo ""
 echo ""
 
 if [[ ("$WEBSERV" == "y" || "$WEBSERV" == "Y") ]]; then
-		echo ""
-	else
-		sudo systemctl status php-fpm
+	echo ""
+else
+	sudo systemctl status php-fpm
 fi
 
 echo ""
