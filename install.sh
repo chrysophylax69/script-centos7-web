@@ -223,7 +223,7 @@ if [[ ("$WEBSERV" == "y" || "$WEBSERV" == "Y") ]]; then
 	echo ""
 	echo ""
 else
-	echo ""
+		echo ""
 	echo "Relance Nginx + PHP-FPM :"
 	echo ""
 	sleep 3
