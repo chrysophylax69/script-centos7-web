@@ -2,10 +2,13 @@
 mkdir /etc/nginx/sites-available
 mkdir /etc/nginx/sites-enabled
 
+
 vim /etc/nginx/nginx.conf (Add these lines to the end of the http {} block, then save the file:)
-modifier ": root         /var/www/html;"
+MODOFIER ": root         /var/www/html;"
+ADD under "include /etc/nginx/conf.d/*.conf;"
 include /etc/nginx/sites-enabled/*.conf;
 server_names_hash_bucket_size 64;
+
 
 vim /etc/nginx/sites-available/nginxsite.com.conf =>
 server {
@@ -50,6 +53,7 @@ group = nginx
 phpmyadmin =>
 ln -s /usr/share/phpMyAdmin/ /var/www/html/
 
+mkdir /var/lib/php/session
 chmod 777 /var/lib/php/session
 chown -R nginx:nginx /var/www/html
 
