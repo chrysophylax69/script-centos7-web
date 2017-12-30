@@ -119,8 +119,8 @@ if [[ ("$PHP7" == "y" || "$PHP7" == "Y") ]]; then
 		#sudo yum -y install php70 php70-php-devel php70-php-mysqlnd php70-php-common php70-php-fpm php70-php-gd php70-php-ldap php70-php-odbc php70-php-pear php70-php-xml php70-php-xmlrpc php70-php-mbstring php70-php-snmp php70-php-soap php70-php-mcrypt php70-php-pecl-memcache php70-php-opcache php70-php-imap php7.0-cli ImageMagick ruby-libs php70-php-intl php70-php-pspell php70-php-recode php70-php-tidy php70-php-pecl-imagick php70-php-pecl-zip
 		#sudo systemctl start memcached
 		#sudo systemctl enable memcached
-		sudo systemctl start php70-php-fpm
-		sudo systemctl enable php70-php-fpm
+		sudo systemctl start php-fpm
+		sudo systemctl enable php-fpm
 	fi
 else		
 	if [[ ("$WEBSERV" == "y" || "$WEBSERV" == "Y") ]]; then
@@ -137,6 +137,9 @@ else
 fi
 
 echo ""
+sleep 5
+clear
+
 #echo "Vérification de Memcache :"
 #echo ""
 #sudo systemctl status memcached
@@ -230,7 +233,7 @@ if [[ ("$PHP7" == "y" || "$PHP7" == "Y") ]]; then
 	if [[ ("$WEBSERV" == "y" || "$WEBSERV" == "Y") ]]; then
 		echo ""
 	else
-		sudo systemctl restart php70-php-fpm
+		sudo systemctl restart php-fpm
 	fi
 else
 	if [[ ("$WEBSERV" == "y" || "$WEBSERV" == "Y") ]]; then
@@ -255,7 +258,7 @@ if [[ ("$PHP7" == "y" || "$PHP7" == "Y") ]]; then
 	if [[ ("$WEBSERV" == "y" || "$WEBSERV" == "Y") ]]; then
 		echo ""
 	else
-		sudo systemctl status php70-php-fpm
+		sudo systemctl status php-fpm
 	fi
 else
 	if [[ ("$WEBSERV" == "y" || "$WEBSERV" == "Y") ]]; then
