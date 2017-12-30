@@ -24,7 +24,7 @@ sudo yum -y install epel-release
 sudo yum -y update
 sudo yum -y upgrade
 sudo yum -y groupinstall "Development Tools" 
-sudo yum -y install gmp-devel curl-devel libidn-devel libssh2-devel python-devel openldap-devel vim git net-tools bind-utils gcc make wget memcached
+sudo yum -y install gmp-devel curl-devel libidn-devel libssh2-devel python-devel openldap-devel vim git net-tools bind-utils gcc make wget memcached libmemcached-devel
 echo ""
 echo "Arret du Firewall :"
 echo ""
@@ -138,6 +138,12 @@ else
 	fi
 fi
 
+sudo git clone https://github.com/websupport-sk/pecl-memcache.git
+sudo cd pecl-memcache && phpize && ./configure --disable-memcache-sasl && sudo make && sudo make install
+sudo echo 'extension=memcached.so' >> /etc/php.ini
+sudo echo 'extension=memcache.so' >> /etc/php.ini
+echo "Vérification de Memcached :"
+sudo php -m | grep memcache
 echo ""
 sleep 5
 clear
