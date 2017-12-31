@@ -43,7 +43,7 @@ ln -s /etc/nginx/sites-available/nginxsite.com.conf /etc/nginx/sites-enabled/ngi
 vim /etc/php.ini
 cgi.fix_pathinfo=0
 date.timezone = Europe/Paris
-extension=memcached.so (sudo php -m | grep memcache)
+extension=memcache.so (sudo php -m | grep memcache)
 
 vim /etc/php-fpm.d/www.conf
 listen = /var/run/php-fpm/php-fpm.sock
@@ -112,7 +112,7 @@ ln -s /etc/nginx/sites-available/nginxsite.com.conf /etc/nginx/sites-enabled/ngi
 vim /etc/php.ini
 cgi.fix_pathinfo=0
 date.timezone = Europe/Paris
-extension=memcached.so (sudo php -m | grep memcache)
+extension=memcache.so (sudo php -m | grep memcache)
 
 vim /etc/php-fpm.d/www.conf
 listen = /var/run/php-fpm/php-fpm.sock
