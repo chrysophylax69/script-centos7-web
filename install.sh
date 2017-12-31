@@ -138,7 +138,7 @@ else
 	fi
 fi
 
-sudo git clone https://github.com/websupport-sk/pecl-memcache.git
+git clone https://github.com/websupport-sk/pecl-memcache.git
 cd pecl-memcache 
 sudo phpize 
 sudo ./configure --disable-memcache-sasl 
