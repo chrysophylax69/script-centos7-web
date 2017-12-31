@@ -147,9 +147,6 @@ sudo make install
 sudo cd ..
 echo ""
 echo "Vérification de Memcached :"
-sudo php -m | grep memcache
-echo ""
-echo "Vérification de Memcached :"
 echo ""
 sudo systemctl status memcached
 echo ""
@@ -274,8 +271,8 @@ else
 fi
 
 echo ""
-#echo ""
-#sudo systemctl status memcached
+echo ""
+sudo systemctl status memcached
 echo ""
 echo ""
 echo "Installation Finish. Voir le readme pour la conf."
