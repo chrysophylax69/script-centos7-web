@@ -90,12 +90,12 @@ sudo yum -y install mariadb-server mariadb mariadb-devel
 sudo systemctl start mariadb 
 sudo systemctl enable mariadb
 echo ""
+echo "Mise en route DB :"
+sudo mysql_secure_installation
+echo ""
 echo "Vérification de DB :"
 echo ""
 sudo systemctl status mariadb
-echo ""
-echo "Mise en route DB :"
-sudo mysql_secure_installation
 echo ""
 sleep 5
 clear
